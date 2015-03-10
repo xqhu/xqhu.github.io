@@ -219,6 +219,10 @@ body,
 #container {
   height: 100%;
 }
+::selection {
+  color: #fff;
+  background: #3b8dbd;
+}
 body {
   background: #eaeaea;
   font: 14px "Titillium Web", "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", sans-serif;
@@ -426,6 +430,9 @@ body {
 .nav-container .nav-container-inner #main-nav {
   float: left;
 }
+.nav-container .nav-container-inner #main-nav .main-nav-list {
+  float: left;
+}
 .nav-container .nav-container-inner #main-nav .main-nav-list-item {
   position: relative;
   float: left;
@@ -618,15 +625,15 @@ body {
   position: relative;
   margin-top: 0;
   display: block;
-  text-decoration: none;
   color: #aaa;
-  text-align: center;
   padding: 16px 40px 24px;
   border-bottom: 1px solid #ddd;
   -webkit-transition: 0.2s ease-in;
   -moz-transition: 0.2s ease-in;
   -ms-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
+  text-align: center;
+  text-decoration: none;
 }
 .article-nav-link-wrap .icon {
   position: absolute;
@@ -671,16 +678,19 @@ body {
   margin-bottom: 6px;
 }
 .widget {
+  line-height: 1.6em;
+  word-wrap: break-word;
+  font-size: 0.9em;
   color: #777;
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
 .widget a {
-  color: #3b8dbd;
   text-decoration: none;
+  color: #777;
 }
 .widget a:hover {
-  text-decoration: underline;
+  color: #444;
 }
 .widget ul ul,
 .widget ol ul,
@@ -693,11 +703,6 @@ body {
 .widget dl dl {
   margin-left: 15px;
   list-style: disc;
-}
-.widget {
-  line-height: 1.6em;
-  word-wrap: break-word;
-  font-size: 0.9em;
 }
 .widget ul,
 .widget ol {
@@ -718,9 +723,60 @@ body {
 .widget ol ol {
   list-style: decimal;
 }
+.widget-list ul,
+.widget-list ol {
+  list-style: none;
+}
+.widget-list ul li,
+.widget-list ol li {
+  padding: 10px 0;
+  font-size: 15px;
+  border-bottom: 1px solid #e4e4e4;
+}
+.widget-list ul li a,
+.widget-list ol li a {
+  color: #777;
+}
+.widget-list ul li a:before,
+.widget-list ol li a:before {
+  color: #ccc;
+  content: "\f0da";
+  font-size: 12px;
+  margin-right: 6px;
+  font-family: FontAwesome;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+.widget-list ul li a:hover:before,
+.widget-list ol li a:hover:before {
+  color: #444;
+}
+.widget-list ul ul,
+.widget-list ol ul,
+.widget-list ul ol,
+.widget-list ol ol {
+  list-style: none;
+}
+.widget-list ul ul li,
+.widget-list ol ul li,
+.widget-list ul ol li,
+.widget-list ol ol li {
+  border: none;
+}
+.widget-list ul ul li:last-child,
+.widget-list ol ul li:last-child,
+.widget-list ul ol li:last-child,
+.widget-list ol ol li:last-child {
+  padding-bottom: 0px;
+}
+.widget-float a {
+  font-size: 15px;
+}
 #recent-post li {
   padding: 10px 0 10px 94px;
-  border-bottom: 1px solid #e4e4e4;
+  border-bottom: 1px solid #ddd;
 }
 #recent-post li:before,
 #recent-post li:after {
@@ -764,13 +820,16 @@ body {
   -moz-background-size: 100% 100%;
   background-size: 100% 100%;
 }
-#recent-post li .item-inner a {
-  text-decoration: none;
-}
+#recent-post li .item-inner a,
 #recent-post li .item-inner .item-category {
   font-size: 13px;
   text-transform: uppercase;
 }
+#recent-post li .item-inner a a,
+#recent-post li .item-inner .item-category a {
+  color: #3b8dbd;
+}
+#recent-post li .item-inner a a:hover,
 #recent-post li .item-inner .item-category a:hover {
   color: #444;
 }
@@ -785,9 +844,9 @@ body {
   transition: all 0.2s ease;
 }
 #recent-post li .item-inner .item-date {
-  text-transform: uppercase;
   color: #aaa;
   font-size: 13px;
+  text-transform: uppercase;
 }
 #recent-post li:hover .item-thumbnail {
   opacity: 0.8;
@@ -846,10 +905,14 @@ body {
   margin-right: 6px;
 }
 .article-row {
+  width: 100%;
   float: left;
+  position: relative;
   padding: 30px 0px 0px 30px;
   border-bottom: 1px solid #eee;
-  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .article-row:before,
 .article-row:after {
@@ -1407,11 +1470,11 @@ a.article-title:hover {
   line-height: 1.6em;
 }
 #footer a {
-  color: #3b8dbd;
+  color: #ccc;
   text-decoration: none;
 }
 #footer a:hover {
-  text-decoration: underline;
+  color: #fff;
 }
 #footer .credit {
   padding: 30px;
