@@ -3,18 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>读《Effective Objective-C 2.0》收获 | Calvin Cheung</title>
+  <title>NSString | Calvin Cheung</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是个测试文章，占个坑下面是图片测试">
+  <meta name="description" content="NSString的各种用法总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读《Effective Objective-C 2.0》收获">
-<meta property="og:url" content="http://zwen.name/2015/03/04/读《Effective-Objective-C-2-0》收获/index.html">
+<meta property="og:title" content="NSString">
+<meta property="og:url" content="http://zwen.name/2015/03/25/NSString/index.html">
 <meta property="og:site_name" content="Calvin Cheung">
-<meta property="og:description" content="这是个测试文章，占个坑下面是图片测试">
-<meta property="og:image" content="http://img5.douban.com/lpic/s25790597.jpg">
+<meta property="og:description" content="NSString的各种用法总结">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读《Effective Objective-C 2.0》收获">
-<meta name="twitter:description" content="这是个测试文章，占个坑下面是图片测试">
+<meta name="twitter:title" content="NSString">
+<meta name="twitter:description" content="NSString的各种用法总结">
 
   
   
@@ -64,7 +63,7 @@
               
                 <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
               
-                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Reading/">Reading</a></li></ul>
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/">iOS</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/iOS/Foundation/">Foundation</a></li></ul></li></ul>
                   
                 <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/about/index.html">About</a></li>
               
@@ -86,11 +85,11 @@
           <section id="main">
             <div class="main-body-header">
 
-              <h1 class="header"><a class="page-title-link" href="/categories/Reading/">Reading</a></h1>
+              <h1 class="header"><a class="page-title-link" href="/categories/iOS/">iOS</a><i class="icon" id="icon-angle-right"></i><a class="page-title-link" href="/categories/iOS/Foundation/">Foundation</a></h1>
             </div>
             <div class="main-body-content">
               
-  <article id="post-读《Effective-Objective-C-2-0》收获" class="article article-single article-type-post" itemscope itemprop="blogPost">
+  <article id="post-NSString" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
       <!--  -->
       
@@ -98,26 +97,31 @@
           
   
     <h1 class="article-title" itemprop="name">
-      读《Effective Objective-C 2.0》收获
+      NSString
     </h1>
   
 
         </header>
       
       <p class="article-byline">
-        <a href="/2015/03/04/读《Effective-Objective-C-2-0》收获/" class="article-date">
-  <time datetime="2015-03-04T14:13:48.000Z" itemprop="datePublished">2015-03-04</time>
+        <a href="/2015/03/25/NSString/" class="article-date">
+  <time datetime="2015-03-25T13:07:15.000Z" itemprop="datePublished">2015-03-25</time>
 </a>
       </p>
       <div class="article-entry" itemprop="articleBody">
-        <p>这是个测试文章，占个坑<br>下面是图片测试<br><img src="http://img5.douban.com/lpic/s25790597.jpg" alt="http://img5.douban.com/lpic/s25790597.jpg"></p>
+        <h1 id="NSString的各种用法总结">NSString的各种用法总结</h1><a id="more"></a>
+<h3 id="1-_去掉字符串两端的空格">1. 去掉字符串两端的空格</h3><pre><code><span class="keyword">str</span> = [<span class="keyword">str</span> stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+</code></pre><h3 id="2-_大小写、首字母大写（国际化做翻译的时候比较常用）">2. 大小写、首字母大写（国际化做翻译的时候比较常用）</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr_selector">[string1 uppercaseString]</span>;<span class="comment">//大写</span></span><br><span class="line"><span class="attr_selector">[string2 lowercaseString]</span>;<span class="comment">//小写</span></span><br><span class="line"><span class="attr_selector">[string2 capitalizedString]</span>;<span class="comment">//首字母大小</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-_分割字符串">3. 分割字符串</h3><pre><code>NSArray *<span class="built_in">array</span> = [<span class="built_in">string</span> componentsSeparatedByString:@<span class="string">","</span>];
+</code></pre><h3 id="4-_NSString和NSData互换">4. NSString和NSData互换</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSString* aStr = [[NSString alloc] <span class="string">initWithData:</span>aData <span class="string">encoding:</span>NSASCIIStringEncoding];</span><br><span class="line">NSData* aData = [aStr <span class="string">dataUsingEncoding:</span> NSASCIIStringEncoding];</span><br></pre></td></tr></table></figure>
+<h3 id="5-_查找子串">5. 查找子串</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSRange <span class="keyword">range</span> = [string1 rangeOfString:subString];</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">range</span>.length == <span class="number">0</span>)<span class="comment">//length等于0表示未找到</span></span><br></pre></td></tr></table></figure>
 
       </div>
       <footer class="article-footer">
-        <a data-url="http://zwen.name/2015/03/04/读《Effective-Objective-C-2-0》收获/" data-id="ci74v47x60001p9vvr7759qh2" class="article-share-link">分享到</a>
+        <a data-url="http://zwen.name/2015/03/25/NSString/" data-id="ci7or0qqc0002dovvm614ugmh" class="article-share-link">分享到</a>
         
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/阅读/">阅读</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NSString/">NSString</a></li></ul>
 
       </footer>
     </div>
@@ -170,18 +174,17 @@
         
           <li>
             <div class="item-thumbnail">
-              <a href="/2015/03/04/读《Effective-Objective-C-2-0》收获/" class="thumbnail">
+              <a href="/2015/03/25/NSString/" class="thumbnail">
   
-    <span style="background-image:url(http://img5.douban.com/lpic/s25790597.jpg
-)" alt="读《Effective Objective-C 2.0》收获" class="thumbnail-image"></span>
+    <span class="thumbnail-image thumbnail-none"></span>
   
 
 </a>
             </div>
             <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/Reading/">Reading</a></p>
-              <p class="item-title"><a href="/2015/03/04/读《Effective-Objective-C-2-0》收获/" class="title">读《Effective Objective-C 2.0》收获</a></p>
-              <p class="item-date"><time datetime="2015-03-04T14:13:48.000Z" itemprop="datePublished">2015-03-04</time></p>
+              <p class="item-category"><a class="article-category-link" href="/categories/iOS/">iOS</a><i class="icon" id="icon-angle-right"></i><a class="article-category-link" href="/categories/iOS/Foundation/">Foundation</a></p>
+              <p class="item-title"><a href="/2015/03/25/NSString/" class="title">NSString</a></p>
+              <p class="item-date"><time datetime="2015-03-25T13:07:15.000Z" itemprop="datePublished">2015-03-25</time></p>
             </div>
           </li>
         
@@ -210,7 +213,7 @@
   <div class="widget-wrap widget-list">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/Foundation/">Foundation</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -230,7 +233,7 @@
   <div class="widget-wrap widget-list">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/阅读/">阅读</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/NSString/">NSString</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
